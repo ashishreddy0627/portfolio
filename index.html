@@ -279,9 +279,13 @@
   </footer>
 
   <script>
-    // Icons
-    lucide.createIcons();
-
+    
+// Icons — safe call so page doesn't break if Lucide fails
+try {
+  if (window.lucide) window.lucide.createIcons();
+} catch(e) {
+  console.warn("Lucide icons failed, skipping...");
+}
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
