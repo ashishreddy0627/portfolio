@@ -1,139 +1,319 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ashish Reddy Kandula — Full-Stack Java Developer</title>
   <meta name="description" content="Full-stack Java developer portfolio — Spring Boot, React, AWS, Kubernetes, Terraform." />
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] },
-          boxShadow: { soft: "0 10px 30px rgba(0,0,0,0.06)" },
+          fontFamily: { sans: ["Inter","system-ui","-apple-system","Segoe UI","Roboto","sans-serif"] },
+          boxShadow: { soft: "0 10px 30px rgba(0,0,0,0.08)" }
         }
-      },
-      darkMode: 'class'
+      }
     }
   </script>
+  <!-- Lucide icons -->
   <script type="module" src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :focus-visible { outline: 3px solid #22c55e; outline-offset: 2px; }
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+    /* Active nav underline */
+    .nav-link { position: relative; }
+    .nav-link.active::after{
+      content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px;
+      background: linear-gradient(90deg,#22c55e,#06b6d4);
+      border-radius: 9999px;
+    }
+  </style>
 </head>
-<body class="bg-white text-gray-900">
-  <header class="sticky top-0 z-40 backdrop-blur bg-white/75 border-b">
-    <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="font-semibold text-lg">Ashish Reddy Kandula</div>
+<body class="bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+  <!-- Skip link -->
+  <a href="#content" class="sr-only focus:not-sr-only focus:absolute focus:m-4 focus:px-3 focus:py-2 focus:bg-black focus:text-white rounded">Skip to content</a>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b bg-white/75 dark:bg-gray-950/75 backdrop-blur">
+    <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between" aria-label="Primary">
+      <a href="#" class="font-semibold text-lg">Ashish Reddy Kandula</a>
       <ul class="hidden sm:flex items-center gap-6">
-        <li><a class="hover:underline" href="#projects">Projects</a></li>
-        <li><a class="hover:underline" href="#skills">Skills</a></li>
-        <li><a class="hover:underline" href="#experience">Experience</a></li>
-        <li><a class="hover:underline" href="#education">Education</a></li>
-        <li><a class="hover:underline" href="#contact">Contact</a></li>
+        <li><a class="nav-link hover:opacity-80" href="#home">Home</a></li>
+        <li><a class="nav-link hover:opacity-80" href="#projects">Projects</a></li>
+        <li><a class="nav-link hover:opacity-80" href="#skills">Skills</a></li>
+        <li><a class="nav-link hover:opacity-80" href="#contact">Contact</a></li>
       </ul>
       <div class="flex items-center gap-2">
-        <a href="https://github.com/ashishreddy1120" target="_blank" class="p-2 rounded-lg border hover:bg-gray-50"><i data-lucide="github" class="w-5 h-5"></i></a>
-        <a href="https://www.linkedin.com/in/ashishreddy1120" target="_blank" class="p-2 rounded-lg border hover:bg-gray-50"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+        <a aria-label="GitHub" href="https://github.com/ashishreddy1120" target="_blank" rel="noreferrer" class="p-2 rounded-lg border hover:bg-gray-50 dark:hover:bg-gray-900"><i data-lucide="github" class="w-5 h-5"></i></a>
+        <a aria-label="LinkedIn" href="https://www.linkedin.com/in/ashishreddy1120" target="_blank" rel="noreferrer" class="p-2 rounded-lg border hover:bg-gray-50 dark:hover:bg-gray-900"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+        <!-- Dark mode toggle -->
+        <button id="themeToggle" class="p-2 rounded-lg border hover:bg-gray-50 dark:hover:bg-gray-900" aria-label="Toggle dark mode">
+          <i data-lucide="moon" class="w-5 h-5 hidden dark:inline"></i>
+          <i data-lucide="sun" class="w-5 h-5 dark:hidden"></i>
+        </button>
       </div>
     </nav>
   </header>
 
-  <main>
-    <section class="border-b">
-      <div class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h1 class="text-4xl sm:text-5xl font-extrabold">Full-Stack Java Developer</h1>
-          <p class="mt-4 text-lg text-gray-600">
-            Full-stack engineer with 4+ years building secure, cloud-native applications. I design resilient microservices with Spring Boot, optimize data access layers, and craft clean UIs in React. Comfortable across AWS, CI/CD, and Kubernetes — I ship reliably and measure impact.
+  <main id="content">
+    <!-- Hero -->
+    <section id="home" class="relative border-b">
+      <div class="absolute inset-0 bg-gradient-to-br from-emerald-100 via-cyan-100 to-transparent dark:from-gray-900/40 dark:via-gray-900/10 dark:to-transparent pointer-events-none"></div>
+      <div class="relative max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+        <div class="reveal show">
+          <p class="text-sm tracking-wider uppercase text-emerald-600 dark:text-emerald-400">Full-Stack Java Developer</p>
+          <h1 class="mt-2 text-4xl sm:text-5xl font-extrabold leading-tight">
+            Building secure, scalable <span class="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">microservices</span> & clean React UIs
+          </h1>
+          <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+            4+ years shipping cloud-native apps with Spring Boot, React, and AWS. I optimize data access layers, automate CI/CD, and measure impact.
           </p>
           <div class="mt-6 flex flex-wrap gap-2">
-            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm border">Spring Boot</span>
-            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm border">React + TypeScript</span>
-            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm border">AWS</span>
-            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm border">CI/CD</span>
+            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm border"><i data-lucide="cpu" class="w-4 h-4 mr-1"></i> Spring Boot</span>
+            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm border"><i data-lucide="boxes" class="w-4 h-4 mr-1"></i> React + TS</span>
+            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm border"><i data-lucide="server" class="w-4 h-4 mr-1"></i> AWS & K8s</span>
+            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm border"><i data-lucide="rocket" class="w-4 h-4 mr-1"></i> CI/CD</span>
           </div>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="mailto:ashishreddy1120@gmail.com" class="inline-flex items-center rounded-2xl px-4 py-2 border shadow-soft hover:shadow"><i data-lucide="mail" class="w-4 h-4 mr-2"></i> Email</a>
+            <a href="tel:4794694889" class="inline-flex items-center rounded-2xl px-4 py-2 border shadow-soft hover:shadow"><i data-lucide="phone" class="w-4 h-4 mr-2"></i> Call</a>
+          </div>
+        </div>
+        <!-- Avatar -->
+        <div class="reveal md:justify-self-end">
+          <!-- Replace the src with your photo URL -->
+          <img src="https://www.dreamstime.com/illustration/gamer-avatar.html" alt="Profile avatar" class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border shadow-soft object-cover mx-auto md:mx-0" />
+          <ul class="mt-6 space-y-2 text-sm">
+            <li class="flex items-start gap-2"><i data-lucide="check-circle" class="mt-0.5 w-4 h-4 text-emerald-500"></i> Java, Spring Boot, Hibernate, JPA</li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle" class="mt-0.5 w-4 h-4 text-emerald-500"></i> React, TypeScript, Tailwind</li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle" class="mt-0.5 w-4 h-4 text-emerald-500"></i> AWS, Docker, Kubernetes, Terraform</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="py-14">
+    <!-- Projects -->
+    <section id="projects" class="py-16">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-6">Projects & Impact</h2>
+        <div class="reveal flex items-center gap-3 mb-6">
+          <i data-lucide="server" class="w-6 h-6"></i>
+          <h2 class="text-3xl font-bold tracking-tight">Featured Projects & Impact</h2>
+        </div>
         <div class="grid md:grid-cols-2 gap-6">
-          <article class="rounded-2xl border p-6 shadow-soft">
-            <h3 class="text-xl font-semibold">Sundaram Finance</h3>
+          <!-- Sundaram Finance -->
+          <article class="reveal rounded-2xl border p-6 shadow-soft hover:shadow-lg transition">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <h3 class="text-xl font-semibold">Sundaram Finance</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Software Engineer (Full-Stack) • 2023 — 2024</p>
+              </div>
+              <div class="flex flex-wrap gap-2 justify-end max-w-sm">
+                <span class="text-xs border rounded-full px-2 py-0.5">Java</span>
+                <span class="text-xs border rounded-full px-2 py-0.5">Spring Boot</span>
+                <span class="text-xs border rounded-full px-2 py-0.5">MongoDB</span>
+                <span class="text-xs border rounded-full px-2 py-0.5">Oracle</span>
+                <span class="text-xs border rounded-full px-2 py-0.5">MySQL</span>
+              </div>
+            </div>
             <ul class="mt-4 space-y-2 text-sm list-disc pl-5">
-              <li>Reduced API latency 35% by refactoring ORM mappings and batching queries.</li>
-              <li>Unified access layer across MongoDB + Oracle/MySQL; reduced duplicate I/O 40%.</li>
-              <li>Implemented observability (Prometheus + ELK) to speed up RCA by 60%.</li>
+              <li>Reduced API latency 35% via ORM tuning, batching, read/write separation.</li>
+              <li>Unified access layer across MongoDB + Oracle/MySQL; cut duplicate I/O 40%.</li>
+              <li>Observability (Prometheus + ELK) accelerated RCA by ~60%.</li>
             </ul>
           </article>
 
-          <article class="rounded-2xl border p-6 shadow-soft">
-            <h3 class="text-xl font-semibold">Travelers</h3>
+          <!-- Travelers -->
+          <article class="reveal rounded-2xl border p-6 shadow-soft hover:shadow-lg transition">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <h3 class="text-xl font-semibold">Travelers</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Backend Engineer • 2024 — 2025</p>
+              </div>
+              <div class="flex flex-wrap gap-2 justify-end max-w-sm">
+                <span class="text-xs border rounded-full px-2 py-0.5">API Gateway</span>
+                <span class="text-xs border rounded-full px-2 py-0.5">Lambda</span>
+                <span class="text-xs border rounded-full px-2 py-0.5">VTL</span>
+                <span class="text-xs border rounded-full px-2 py-0.5">Terraform</span>
+                <span class="text-xs border rounded-full px-2 py-0.5">Okta</span>
+              </div>
+            </div>
             <ul class="mt-4 space-y-2 text-sm list-disc pl-5">
-              <li>Built secure APIs with validation using API Gateway models and VTL.</li>
-              <li>Automated IaC with Terraform to reduce drift and outages.</li>
-              <li>Integrated Okta for authentication and authorization.</li>
+              <li>Strict request/response validation via models & VTL transformations.</li>
+              <li>Terraform standardization reduced drift and outages.</li>
+              <li>Okta authN/Z + least-privilege IAM hardened endpoints.</li>
             </ul>
           </article>
 
-          <article class="rounded-2xl border p-6 shadow-soft">
-            <h3 class="text-xl font-semibold">Vorizo Infotech</h3>
+          <!-- Vorizo -->
+          <article class="reveal rounded-2xl border p-6 shadow-soft hover:shadow-lg transition md:col-span-2">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <h3 class="text-xl font-semibold">Vorizo Infotech</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Full-Stack Developer • 2022 — 2023</p>
+              </div>
+              <div class="flex flex-wrap gap-2 justify-end max-w-sm">
+                <span class="text-xs border rounded-full px-2 py-0.5">React</span>
+                <span class="text-xs border rounded-full px-2 py-0.5">Spring Boot</span>
+                <span class="text-xs border rounded-full px-2 py-0.5">MySQL</span>
+                <span class="text-xs border rounded-full px-2 py-0.5">Jenkins</span>
+              </div>
+            </div>
             <ul class="mt-4 space-y-2 text-sm list-disc pl-5">
-              <li>Modernized employer data platform with pagination, caching, and bulk imports.</li>
-              <li>Introduced CI with Jenkins; reduced release time from hours to minutes.</li>
-              <li>Hardened APIs with rate limits and input validation.</li>
+              <li>Modernized data platform: pagination, caching, bulk imports.</li>
+              <li>Zero-downtime deploys cut release times from hours to minutes.</li>
+              <li>Rate limiting + validation halved data-integrity tickets.</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="skills" class="py-14 bg-gray-50">
+    <!-- Skills -->
+    <section id="skills" class="py-16 bg-gray-50 dark:bg-gray-900/40">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-6">Skills</h2>
+        <div class="reveal flex items-center gap-3 mb-6">
+          <i data-lucide="cpu" class="w-6 h-6"></i>
+          <h2 class="text-3xl font-bold tracking-tight">Skills</h2>
+        </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="rounded-2xl border bg-white p-5">
-            <h3 class="font-semibold mb-3">Back-End</h3>
-            <p>Java, Spring Boot, Hibernate, REST, GraphQL</p>
+          <!-- Card -->
+          <div class="reveal group rounded-2xl border bg-white dark:bg-gray-950 p-5 shadow-soft hover:shadow-lg transition">
+            <h3 class="font-semibold mb-3 flex items-center gap-2"><i data-lucide="code-xml" class="w-5 h-5"></i> Back-End</h3>
+            <div class="flex flex-wrap gap-2 text-sm">
+              <span class="px-3 py-1 rounded-full border group-hover:-translate-y-0.5 transition">Java</span>
+              <span class="px-3 py-1 rounded-full border">Spring Boot</span>
+              <span class="px-3 py-1 rounded-full border">JPA/Hibernate</span>
+              <span class="px-3 py-1 rounded-full border">REST/GraphQL</span>
+              <span class="px-3 py-1 rounded-full border">Spring Security/JWT</span>
+            </div>
           </div>
-          <div class="rounded-2xl border bg-white p-5">
-            <h3 class="font-semibold mb-3">Front-End</h3>
-            <p>React, TypeScript, Redux, TailwindCSS</p>
+
+          <div class="reveal group rounded-2xl border bg-white dark:bg-gray-950 p-5 shadow-soft hover:shadow-lg transition">
+            <h3 class="font-semibold mb-3 flex items-center gap-2"><i data-lucide="layout" class="w-5 h-5"></i> Front-End</h3>
+            <div class="flex flex-wrap gap-2 text-sm">
+              <span class="px-3 py-1 rounded-full border">React</span>
+              <span class="px-3 py-1 rounded-full border">TypeScript</span>
+              <span class="px-3 py-1 rounded-full border">Redux/Zustand</span>
+              <span class="px-3 py-1 rounded-full border">Tailwind</span>
+              <span class="px-3 py-1 rounded-full border">Testing Library</span>
+            </div>
           </div>
-          <div class="rounded-2xl border bg-white p-5">
-            <h3 class="font-semibold mb-3">Cloud & DevOps</h3>
-            <p>AWS, Docker, Kubernetes, Terraform, Jenkins</p>
+
+          <div class="reveal group rounded-2xl border bg-white dark:bg-gray-950 p-5 shadow-soft hover:shadow-lg transition">
+            <h3 class="font-semibold mb-3 flex items-center gap-2"><i data-lucide="cloud" class="w-5 h-5"></i> Cloud & DevOps</h3>
+            <div class="flex flex-wrap gap-2 text-sm">
+              <span class="px-3 py-1 rounded-full border">AWS (API GW, Lambda, S3)</span>
+              <span class="px-3 py-1 rounded-full border">Docker</span>
+              <span class="px-3 py-1 rounded-full border">Kubernetes</span>
+              <span class="px-3 py-1 rounded-full border">Terraform</span>
+              <span class="px-3 py-1 rounded-full border">Jenkins/GitHub Actions</span>
+            </div>
           </div>
-          <div class="rounded-2xl border bg-white p-5">
-            <h3 class="font-semibold mb-3">Data</h3>
-            <p>MySQL, Oracle, MongoDB, Kafka, Redis</p>
+
+          <div class="reveal group rounded-2xl border bg-white dark:bg-gray-950 p-5 shadow-soft hover:shadow-lg transition">
+            <h3 class="font-semibold mb-3 flex items-center gap-2"><i data-lucide="database" class="w-5 h-5"></i> Data & Messaging</h3>
+            <div class="flex flex-wrap gap-2 text-sm">
+              <span class="px-3 py-1 rounded-full border">MySQL</span>
+              <span class="px-3 py-1 rounded-full border">Oracle</span>
+              <span class="px-3 py-1 rounded-full border">MongoDB</span>
+              <span class="px-3 py-1 rounded-full border">Kafka</span>
+              <span class="px-3 py-1 rounded-full border">Redis</span>
+              <span class="px-3 py-1 rounded-full border">Index/Query Tuning</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="py-14">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-6">Contact</h2>
-        <p>Email: <a href="mailto:ashishreddy1120@gmail.com" class="text-blue-600 underline">ashishreddy1120@gmail.com</a></p>
-        <p>Phone: 479-469-4889</p>
-        <p>GitHub: <a href="https://github.com/ashishreddy1120" class="text-blue-600 underline">github.com/ashishreddy1120</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/ashishreddy1120" class="text-blue-600 underline">linkedin.com/in/ashishreddy1120</a></p>
+    <!-- Contact -->
+    <section id="contact" class="py-16">
+      <div class="max-w-3xl mx-auto px-4">
+        <div class="reveal flex items-center gap-3 mb-6">
+          <i data-lucide="mail" class="w-6 h-6"></i>
+          <h2 class="text-3xl font-bold tracking-tight">Contact</h2>
+        </div>
+
+        <!-- FormSubmit: replace the EMAIL below with yours once, confirm email on first submission -->
+        <form class="reveal grid sm:grid-cols-2 gap-4" action="https://formsubmit.co/ashishreddy1120@gmail.com" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="New message from your portfolio">
+          <input type="hidden" name="_template" value="table">
+          <label class="sm:col-span-1">
+            <span class="text-sm text-gray-600 dark:text-gray-300">Your name</span>
+            <input required name="name" class="mt-1 w-full rounded-lg border px-3 py-2 bg-white dark:bg-gray-950" />
+          </label>
+          <label class="sm:col-span-1">
+            <span class="text-sm text-gray-600 dark:text-gray-300">Email</span>
+            <input required type="email" name="email" class="mt-1 w-full rounded-lg border px-3 py-2 bg-white dark:bg-gray-950" />
+          </label>
+          <label class="sm:col-span-2">
+            <span class="text-sm text-gray-600 dark:text-gray-300">Message</span>
+            <textarea required name="message" rows="5" class="mt-1 w-full rounded-lg border px-3 py-2 bg-white dark:bg-gray-950"></textarea>
+          </label>
+          <div class="sm:col-span-2">
+            <button class="inline-flex items-center rounded-xl px-4 py-2 border shadow-soft hover:shadow"><i data-lucide="send" class="w-4 h-4 mr-2"></i> Send</button>
+          </div>
+        </form>
+
+        <div class="reveal mt-6 text-sm text-gray-600 dark:text-gray-300">
+          Prefer email? <a class="underline" href="mailto:ashishreddy1120@gmail.com">ashishreddy1120@gmail.com</a> · Phone: <a class="underline" href="tel:4794694889">479-469-4889</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="border-t py-8">
-    <div class="max-w-6xl mx-auto px-4 text-sm text-center">
-      © <span id="year"></span> Ashish Reddy Kandula. Built with Tailwind CSS.
+    <div class="max-w-6xl mx-auto px-4 text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <p>© <span id="year"></span> Ashish Reddy Kandula. Built for speed, accessibility, and dark mode.</p>
+      <div class="flex items-center gap-3">
+        <a class="underline" href="#projects">Projects</a>
+        <a class="underline" href="#skills">Skills</a>
+        <a class="underline" href="#contact">Contact</a>
+      </div>
     </div>
   </footer>
 
   <script>
+    // Icons
     lucide.createIcons();
+
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Dark mode (persist)
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      root.classList.add('dark');
+    }
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Scrollspy (active nav link)
+    const sections = [...document.querySelectorAll('section[id]')];
+    const links = [...document.querySelectorAll('header .nav-link')];
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(s => spy.observe(s));
   </script>
 </body>
 </html>
-
