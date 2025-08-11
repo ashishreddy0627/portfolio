@@ -1,1 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ashish Reddy Kandula — Full-Stack Java Developer</title>
+  <meta name="description" content="Full-stack Java developer portfolio — Spring Boot, React, AWS, Kubernetes, Terraform." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] },
+          boxShadow: { soft: "0 10px 30px rgba(0,0,0,0.06)" },
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+  <script type="module" src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white text-gray-900">
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/75 border-b">
+    <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="font-semibold text-lg">Ashish Reddy Kandula</div>
+      <ul class="hidden sm:flex items-center gap-6">
+        <li><a class="hover:underline" href="#projects">Projects</a></li>
+        <li><a class="hover:underline" href="#skills">Skills</a></li>
+        <li><a class="hover:underline" href="#experience">Experience</a></li>
+        <li><a class="hover:underline" href="#education">Education</a></li>
+        <li><a class="hover:underline" href="#contact">Contact</a></li>
+      </ul>
+      <div class="flex items-center gap-2">
+        <a href="https://github.com/ashishreddy1120" target="_blank" class="p-2 rounded-lg border hover:bg-gray-50"><i data-lucide="github" class="w-5 h-5"></i></a>
+        <a href="https://www.linkedin.com/in/ashishreddy1120" target="_blank" class="p-2 rounded-lg border hover:bg-gray-50"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="border-b">
+      <div class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h1 class="text-4xl sm:text-5xl font-extrabold">Full-Stack Java Developer</h1>
+          <p class="mt-4 text-lg text-gray-600">
+            Full-stack engineer with 4+ years building secure, cloud-native applications. I design resilient microservices with Spring Boot, optimize data access layers, and craft clean UIs in React. Comfortable across AWS, CI/CD, and Kubernetes — I ship reliably and measure impact.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm border">Spring Boot</span>
+            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm border">React + TypeScript</span>
+            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm border">AWS</span>
+            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm border">CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-14">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-6">Projects & Impact</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <article class="rounded-2xl border p-6 shadow-soft">
+            <h3 class="text-xl font-semibold">Sundaram Finance</h3>
+            <ul class="mt-4 space-y-2 text-sm list-disc pl-5">
+              <li>Reduced API latency 35% by refactoring ORM mappings and batching queries.</li>
+              <li>Unified access layer across MongoDB + Oracle/MySQL; reduced duplicate I/O 40%.</li>
+              <li>Implemented observability (Prometheus + ELK) to speed up RCA by 60%.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border p-6 shadow-soft">
+            <h3 class="text-xl font-semibold">Travelers</h3>
+            <ul class="mt-4 space-y-2 text-sm list-disc pl-5">
+              <li>Built secure APIs with validation using API Gateway models and VTL.</li>
+              <li>Automated IaC with Terraform to reduce drift and outages.</li>
+              <li>Integrated Okta for authentication and authorization.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border p-6 shadow-soft">
+            <h3 class="text-xl font-semibold">Vorizo Infotech</h3>
+            <ul class="mt-4 space-y-2 text-sm list-disc pl-5">
+              <li>Modernized employer data platform with pagination, caching, and bulk imports.</li>
+              <li>Introduced CI with Jenkins; reduced release time from hours to minutes.</li>
+              <li>Hardened APIs with rate limits and input validation.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-14 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-6">Skills</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="rounded-2xl border bg-white p-5">
+            <h3 class="font-semibold mb-3">Back-End</h3>
+            <p>Java, Spring Boot, Hibernate, REST, GraphQL</p>
+          </div>
+          <div class="rounded-2xl border bg-white p-5">
+            <h3 class="font-semibold mb-3">Front-End</h3>
+            <p>React, TypeScript, Redux, TailwindCSS</p>
+          </div>
+          <div class="rounded-2xl border bg-white p-5">
+            <h3 class="font-semibold mb-3">Cloud & DevOps</h3>
+            <p>AWS, Docker, Kubernetes, Terraform, Jenkins</p>
+          </div>
+          <div class="rounded-2xl border bg-white p-5">
+            <h3 class="font-semibold mb-3">Data</h3>
+            <p>MySQL, Oracle, MongoDB, Kafka, Redis</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-14">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-6">Contact</h2>
+        <p>Email: <a href="mailto:ashishreddy1120@gmail.com" class="text-blue-600 underline">ashishreddy1120@gmail.com</a></p>
+        <p>Phone: 479-469-4889</p>
+        <p>GitHub: <a href="https://github.com/ashishreddy1120" class="text-blue-600 underline">github.com/ashishreddy1120</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/ashishreddy1120" class="text-blue-600 underline">linkedin.com/in/ashishreddy1120</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t py-8">
+    <div class="max-w-6xl mx-auto px-4 text-sm text-center">
+      © <span id="year"></span> Ashish Reddy Kandula. Built with Tailwind CSS.
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
