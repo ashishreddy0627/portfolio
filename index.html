@@ -318,47 +318,51 @@
 
   <!-- Fixed script block -->
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      // Icons — safe call so the rest of the script still runs if Lucide fails
-      try {
-        if (window.lucide) window.lucide.createIcons();
-      } catch (e) {
-        console.warn("Lucide icons failed, skipping...");
-      }
+  window.addEventListener("DOMContentLoaded", () => {
+    // Set footer year
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
 
-      // Year
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // Dark mode (persist)
-      const root = document.documentElement;
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        root.classList.add('dark');
-      }
-      document.getElementById('themeToggle').addEventListener('click', () => {
+    // Dark mode (persist)
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      root.classList.add('dark');
+    }
+    const toggleBtn = document.getElementById('themeToggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
         root.classList.toggle('dark');
         localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
       });
+    }
 
-      // Reveal on scroll
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-      }, { threshold: 0.12 });
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      // Scrollspy (active nav link)
-      const sections = [...document.querySelectorAll('section[id]')];
-      const links = [...document.querySelectorAll('header .nav-link')];
-      const spy = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
-          }
-        });
-      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-      sections.forEach(s => spy.observe(s));
-    });
-  </script>
+    // Scrollspy (active nav link)
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('header .nav-link');
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(section => spy.observe(section));
+  });
+</script>
+
 </body>
 </html>
